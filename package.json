@@ -1,0 +1,28 @@
+{
+  "name": "todo-application-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tasks.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FCastillo-91/backend_todo_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FCastillo-91/backend_todo_app/issues"
+  },
+  "homepage": "https://github.com/FCastillo-91/backend_todo_app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "serverless-http": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
