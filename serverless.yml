@@ -12,3 +12,15 @@ functions:
           method: get
           path: tasks
           cors: true
+      - http:
+          method: post
+          path: tasks
+          cors: true
+      - http:
+          method: delete
+          path: tasks/{taskId}
+          cors: true
+      - http:
+          method: put
+          path: tasks/{taskId}
+          cors: true
