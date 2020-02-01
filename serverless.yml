@@ -7,19 +7,26 @@ provider:
 functions:
   tasks:
     handler: tasks.handler
+    environment:
+      DB_HOST: ${opt:DB_HOST}
+      DB_USER: ${opt:DB_USER}
+      DB_PASSWORD: ${opt:DB_PASSWORD}
     events:
       - http:
           method: get
           path: tasks
           cors: true
+
       - http:
           method: post
           path: tasks
           cors: true
+
       - http:
           method: delete
           path: tasks/{taskId}
           cors: true
+          
       - http:
           method: put
           path: tasks/{taskId}
