@@ -31,14 +31,16 @@ app.get("/tasks", function(req, res) {
 
 app.post("/tasks", function(req, res) {
   const newTask = req.body
+  const randomUserId = Math.floor(Math.random() * (3-1)) + 1;
 
-  connection.query("INSERT INTO Tasks SET ?", [newTask], function(err, data) {
+  connection.query("INSERT INTO Tasks SET ?", [newTask, randomUserId], function(err, data) {
     if (err) {
       res.status(500).json({
         error: err
       });
     } else {
       newTask.taskId = data.insertId;
+      newTask.userId = randomUserId;
       res.status(201).json({newTask});
     }
   }); 
@@ -61,8 +63,9 @@ app.delete("/tasks/:taskId", function (req, res) {
 app.put("/tasks/:taskId", function (req, res) {
   const updatedTask = req.body;
   const id = req.params.taskId; 
+  const randomUserId = Math.floor(Math.random() * (3-1)) + 1;
 
-  connection.query("UPDATE Tasks SET ? WHERE taskId=?", [updatedTask, id], function(err) {
+  connection.query("UPDATE Tasks SET ? WHERE taskId=?", [updatedTask, id, randomUserId], function(err) {
     if (err) {
       res.status(500).json({error: err})
     } else {
