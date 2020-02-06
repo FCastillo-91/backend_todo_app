@@ -22,6 +22,11 @@ app.get("/tasks", function(req, res) {
         error: err
       })
     } else {
+      const mapped = data.map(task => {
+        task.completed = (task.completed === 1 ? true : false);
+        task.urgency = (task.urgency === 1 ? true : false);
+        return task;
+      })
       res.status(200).json({
         todos: data
       });
