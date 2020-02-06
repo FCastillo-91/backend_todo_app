@@ -36,16 +36,17 @@ app.get("/tasks", function(req, res) {
 
 app.post("/tasks", function(req, res) {
   const newTask = req.body
-  const randomUserId = Math.floor(Math.random() * (3-1)) + 1;
 
-  connection.query("INSERT INTO Tasks SET ?", [newTask, randomUserId], function(err, data) {
+  connection.query("INSERT INTO Tasks SET ?", [newTask], function(err, data) {
     if (err) {
       res.status(500).json({
         error: err
       });
     } else {
       newTask.taskId = data.insertId;
-      newTask.userId = randomUserId;
+      newTask.completed = false;
+      newTask.due_Date = new Date(newTask.due_Date).toISOString();
+      newTask.urgency = (newTask.urgency === 1 ? true : false);
       res.status(201).json({newTask});
     }
   }); 
