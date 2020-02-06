@@ -69,9 +69,8 @@ app.delete("/tasks/:taskId", function (req, res) {
 app.put("/tasks/:taskId", function (req, res) {
   const updatedTask = req.body;
   const id = req.params.taskId; 
-  const randomUserId = Math.floor(Math.random() * (3-1)) + 1;
 
-  connection.query("UPDATE Tasks SET ? WHERE taskId=?", [updatedTask, id, randomUserId], function(err) {
+  connection.query("UPDATE Tasks SET ? WHERE taskId=?", [updatedTask, id], function(err) {
     if (err) {
       res.status(500).json({error: err})
     } else {
